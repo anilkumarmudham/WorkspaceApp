@@ -1,0 +1,112 @@
+/* ===========================================
+   GLOBAL RESET
+=========================================== */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===========================================
+   ROOT
+=========================================== */
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+
+  --background: #f8fafc;
+  --surface: #ffffff;
+
+  --text: #1f2937;
+  --text-light: #6b7280;
+
+  --border: #e5e7eb;
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===========================================
+   HTML / BODY
+=========================================== */
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* ===========================================
+   TYPOGRAPHY
+=========================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text);
+  font-weight: 600;
+}
+
+p {
+  color: var(--text-light);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===========================================
+   FORM CONTROLS
+=========================================== */
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  outline: none;
+}
+
+/* ===========================================
+   BUTTON
+=========================================== */
+
+button {
+  cursor: pointer;
+}
+
+/* ===========================================
+   IMAGES
+=========================================== */
+
+img {
+  max-width: 100%;
+  display: block;
+}

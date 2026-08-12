@@ -1,0 +1,153 @@
+.weekly-report-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.weekly-report-modal {
+  width: 900px;
+  max-width: 100%;
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0,0,0,.25);
+}
+
+.weekly-report-header {
+  padding: 24px 30px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f8fafc;
+}
+
+.weekly-report-header h2 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.weekly-report-header p {
+  margin-top: 6px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.weekly-report-body {
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.field-value {
+  min-height: 48px;
+  background: #f8fafc;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 15px;
+  color: #334155;
+  display: flex;
+  align-items: center;
+}
+
+.textarea-view {
+  min-height: 140px;
+  display: block;
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+
+.weekly-report-footer {
+  padding: 22px 30px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: flex-end;
+  background: #fff;
+}
+
+.close-report-btn {
+  min-width: 130px;
+  height: 46px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.close-report-btn:hover {
+  background: #1d4ed8;
+}
+
+.close-report-btn:active {
+  transform: scale(.98);
+}
+
+@media (max-width: 900px) {
+
+  .weekly-report-modal {
+    width: 100%;
+    max-height: 95vh;
+  }
+
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .weekly-report-body {
+    padding: 20px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .weekly-report-header {
+    padding: 20px;
+  }
+
+  .weekly-report-body {
+    padding: 18px;
+  }
+
+  .weekly-report-footer {
+    padding: 18px;
+  }
+
+  .close-report-btn {
+    width: 100%;
+  }
+
+}

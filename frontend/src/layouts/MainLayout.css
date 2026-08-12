@@ -1,0 +1,36 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.layout-content {
+  flex: 1;
+  margin-left: 260px;
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-main {
+  padding:24px 32px;;
+  flex: 1;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .layout-content {
+    margin-left: 220px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .layout-content {
+    margin-left: 0;
+  }
+
+  .layout-main {
+    padding: 20px;
+  }
+}
