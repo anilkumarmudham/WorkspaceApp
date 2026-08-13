@@ -23,17 +23,24 @@ jobs:
         with:
           node-version: '22.x'
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+      - name: Install dependencies
+        working-directory: ./backend
+        run: npm install
+      
+      - name: Build
+        working-directory: ./backend
+        run: npm run build --if-present
+      
+      - name: Test
+        working-directory: ./backend
+        run: npm test --if-present
+        
 
-      - name: Upload artifact for deployment job
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .
+          path: ./backend
 
   deploy:
     runs-on: ubuntu-latest
@@ -61,4 +68,4 @@ jobs:
         with:
           app-name: 'workspace-backend-anil'
           slot-name: 'Production'
-          package: .
+          package: ./backend
