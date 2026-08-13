@@ -17,7 +17,7 @@ function ManageClients() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get("http://localhost:5001/api/admin/clients", {
+      const res = await axios.get("https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/clients", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -49,7 +49,7 @@ function ManageClients() {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete("http://localhost:5001/api/admin/clients", {
+      await axios.delete("https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/clients", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -76,7 +76,7 @@ function ManageClients() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:5001/api/admin/clients",
+        "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/clients",
         {
           client_name: clientName,
         },

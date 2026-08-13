@@ -18,7 +18,7 @@ function ManageTeams() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5001/api/admin/teams",
+        "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/teams",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -51,7 +51,7 @@ function ManageTeams() {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        "http://localhost:5001/api/admin/teams",
+        "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/teams",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -81,7 +81,7 @@ function ManageTeams() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:5001/api/admin/teams",
+        "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/teams",
         {
           team_name: teamName,
         },

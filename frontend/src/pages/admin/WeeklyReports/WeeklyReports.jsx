@@ -62,7 +62,7 @@ function WeeklyReports() {
       if (to) params.to = to;
 
       const response = await axios.get(
-        "http://localhost:5001/api/admin/reports",
+        "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/reports",
         {
           params,
           headers: {

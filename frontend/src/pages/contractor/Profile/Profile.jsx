@@ -27,7 +27,7 @@ function Profile() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5001/api/auth/profile",
+        "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/auth/profile",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -69,7 +69,7 @@ function Profile() {
         const token = localStorage.getItem("token");
 
         await axios.put(
-          "http://localhost:5001/api/auth/change-password",
+          "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/auth/change-password",
           {
             currentPassword: passwordData.currentPassword,
             newPassword: passwordData.newPassword,

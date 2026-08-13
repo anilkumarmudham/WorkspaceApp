@@ -152,7 +152,7 @@ function WeeklyReports() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5001/api/admin/clients",
+        "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/clients",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -174,7 +174,7 @@ function WeeklyReports() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.get("http://localhost:5001/api/reports/my", {
+      const response = await axios.get("https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/reports/my", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -245,7 +245,7 @@ function WeeklyReports() {
 
       if (editingReport) {
         response = await axios.put(
-          `http://localhost:5001/api/reports/${editingReport.id}`,
+          `https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/reports/${editingReport.id}`,
           {
             reporting_date: reportingDate,
             week_from: weekFrom,
@@ -265,7 +265,7 @@ function WeeklyReports() {
         );
       } else {
         response = await axios.post(
-          "http://localhost:5001/api/reports",
+          "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/reports",
           {
             reporting_date: reportingDate,
             week_from: weekFrom,

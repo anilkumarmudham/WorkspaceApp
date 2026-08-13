@@ -47,7 +47,7 @@ function Users() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5001/api/admin/users",
+        "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/users",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -104,7 +104,7 @@ function Users() {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:5001/api/admin/users/${id}`,
+        `https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/users/${id}`,
         {
           name: selected.name,
           email: selected.email,

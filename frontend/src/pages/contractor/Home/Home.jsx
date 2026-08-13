@@ -18,7 +18,7 @@ function Home() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5001/api/reports/my",
+        "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/reports/my",
         {
           headers: {
             Authorization: `Bearer ${token}`,

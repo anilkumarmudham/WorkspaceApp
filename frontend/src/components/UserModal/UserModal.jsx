@@ -75,7 +75,7 @@ function UserModal({ isOpen, onClose, user, onUserCreated }) {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5001/api/admin/teams",
+        "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/teams",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -124,7 +124,7 @@ function UserModal({ isOpen, onClose, user, onUserCreated }) {
         console.log("===================================");
 
         await axios.put(
-          `http://localhost:5001/api/admin/users/${user.id}`,
+          `https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/users/${user.id}`,
           payload,
           {
             headers: {
@@ -186,7 +186,7 @@ function UserModal({ isOpen, onClose, user, onUserCreated }) {
       console.log(payload);
       console.log("===================================");
 
-      await axios.post("http://localhost:5001/api/admin/users", payload, {
+      await axios.post("https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/admin/users", payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
