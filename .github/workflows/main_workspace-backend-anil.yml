@@ -1,4 +1,4 @@
-name: Build and deploy Node.js app to Azure Web App - workspace-backend-anil
+name: Build and Deploy Backend to Azure App Service
 
 on:
   push:
@@ -24,22 +24,22 @@ jobs:
           node-version: "22.x"
 
       - name: Install Dependencies
-        working-directory: ./backend
+        working-directory: backend
         run: npm install
 
       - name: Build Project
-        working-directory: ./backend
+        working-directory: backend
         run: npm run build --if-present
 
       - name: Run Tests
-        working-directory: ./backend
+        working-directory: backend
         run: npm test --if-present
 
       - name: Upload Backend Artifact
         uses: actions/upload-artifact@v4
         with:
           name: backend
-          path: ./backend
+          path: backend
 
   deploy:
     runs-on: ubuntu-latest
@@ -54,6 +54,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: backend
+          path: backend
 
       - name: Azure Login
         uses: azure/login@v2
@@ -66,5 +67,4 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: workspace-backend-anil
-          slot-name: Production
-          package: .
+          package: backend
