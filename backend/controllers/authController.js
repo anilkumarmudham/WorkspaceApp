@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-
 const {
   createUser,
   findUserByEmail,
@@ -41,7 +40,6 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
-   
 
     const user = await findUserByEmail(email);
 
@@ -62,8 +60,10 @@ exports.login = async (req, res) => {
           "Your account has been deactivated. Please contact the administrator.",
       });
     }
-
+    console.log("Entered Password:", password);
+    console.log("Stored Hash:", user.password);
     const isMatch = await bcrypt.compare(password, user.password);
+    console.log("Password Match:", isMatch);
 
     if (!isMatch) {
       return res.status(401).json({
@@ -71,8 +71,6 @@ exports.login = async (req, res) => {
         message: "Invalid Password",
       });
     }
-
-    
 
     // ==========================
     // JWT DEBUG START

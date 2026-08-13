@@ -59,6 +59,11 @@ const findUserByEmail = async (email) => {
     [email]
   );
 
+  console.log("================================");
+  console.log("DATABASE USER");
+  console.log(rows[0]);
+  console.log("================================");
+
   return rows[0];
 };
 
