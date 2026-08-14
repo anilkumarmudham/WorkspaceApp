@@ -415,7 +415,7 @@ function WeeklyReports() {
               name="team"
               value={formData.team}
               onChange={handleChange}
-              placeholder="Enter Team"
+              placeholder="eg: testing, development, cloud, SAP, Support"
               required
             />
           </div>
@@ -426,7 +426,7 @@ function WeeklyReports() {
             <input
               type="text"
               name="project"
-              placeholder="Enter Project Name"
+              placeholder="eg: CERA, RCM 2.0, ACE"
               value={formData.project}
               onChange={handleChange}
               required
