@@ -35,45 +35,40 @@ exports.getAllUsers = async () => {
 
 exports.getAllReports = async (from, to) => {
   let query = `
-SELECT
-    wr.id,
-    wr.reporting_date,
-    wr.created_at,
-    wr.updated_at,
-    wr.week_from,
-    wr.week_to,
-    wr.status,
+    SELECT
+        wr.id,
 
-    wr.client_name,
-    wr.client_spoc,
-    wr.project_name,
-    wr.work_details,
+        u.name AS employee,
+        u.email,
 
-    wr.is_edited,
-    wr.edit_count,
-    wr.last_edited_at,
+        wr.reporting_date AS reportingDate,
+        wr.week_from AS weekFrom,
+        wr.week_to AS weekTo,
 
-    u.id AS user_id,
-    u.name AS employee_name,
-    u.email,
+        wr.client_name AS client,
+        wr.team AS team,
+        wr.client_spoc AS spoc,
+        wr.project_name AS project,
+        wr.work_details AS work,
 
-    t.team_name
+        wr.status,
+        wr.created_at AS submittedAt,
 
-FROM weekly_reports wr
+        wr.is_edited AS edited,
+        wr.edit_count,
+        wr.last_edited_at
 
-LEFT JOIN users u
-    ON wr.user_id = u.id
+    FROM weekly_reports wr
 
-LEFT JOIN teams t
-    ON wr.team = t.team_name
-`;
+    LEFT JOIN users u
+        ON wr.user_id = u.id
+  `;
 
   const params = [];
 
   if (from && to) {
     query += `
-        WHERE
-            DATE(wr.reporting_date) BETWEEN ? AND ?
+      WHERE DATE(wr.reporting_date) BETWEEN ? AND ?
     `;
 
     params.push(from, to);
@@ -83,8 +78,6 @@ LEFT JOIN teams t
     ORDER BY wr.reporting_date DESC, wr.created_at DESC
   `;
 
-  console.log(query);
-  console.log(params);
   const [rows] = await db.query(query, params);
 
   return rows;

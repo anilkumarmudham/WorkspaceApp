@@ -46,32 +46,35 @@ exports.getReports = async (req, res) => {
     console.log("To:", to);
 
     const reports = await getAllReports(from, to);
-
+    console.log("========== ADMIN REPORT DEBUG ==========");
+    console.log("REPORT COUNT:", reports.length);
+    console.log("FIRST REPORT FROM MODEL:", reports[0]);
+    console.log("FIRST REPORT TEAM:", reports[0]?.team);
+    console.log("========================================");
     const formattedReports = reports.map((report) => ({
       id: report.id,
 
-      employee: report.employee_name,
+      employee: report.employee,
       email: report.email,
 
       reportingDate:
-        report.is_edited && report.last_edited_at
+        report.edited && report.last_edited_at
           ? report.last_edited_at
-          : report.reporting_date,
+          : report.reportingDate,
 
-      submittedAt:
-        report.last_edited_at || report.updated_at || report.created_at,
+      submittedAt: report.last_edited_at || report.submittedAt,
 
-      weekFrom: report.week_from,
-      weekTo: report.week_to,
+      weekFrom: report.weekFrom,
+      weekTo: report.weekTo,
 
-      client: report.client_name,
-      spoc: report.client_spoc,
-      team: report.team_name,
-      project: report.project_name,
-      work: report.work_details,
+      client: report.client,
+      spoc: report.spoc,
+      team: report.team,
+      project: report.project,
+      work: report.work,
 
       status: report.status,
-      edited: report.is_edited,
+      edited: report.edited,
     }));
 
     return res.status(200).json({

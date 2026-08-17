@@ -72,6 +72,9 @@ function WeeklyReports() {
       );
 
       if (response.data.success) {
+        console.log("FULL REPORT API RESPONSE:", response.data);
+        console.log("REPORTS FROM API:", response.data.reports);
+        console.log("FIRST REPORT TEAM:", response.data.reports?.[0]?.team);
         setReports(response.data.reports);
       }
     } catch (error) {

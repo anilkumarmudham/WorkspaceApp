@@ -75,6 +75,33 @@ ORDER BY reporting_date DESC, created_at DESC
   return rows;
 };
 exports.getAllReports = async () => {
+  console.log("========== DATABASE DEBUG ==========");
+
+  // Check which database the backend is actually connected to
+  const [dbInfo] = await db.query(`
+    SELECT
+      DATABASE() AS database_name,
+      @@hostname AS hostname
+  `);
+
+  console.log("DATABASE INFO:", dbInfo);
+
+  // Check the actual Team values coming from the database
+  const [teamRows] = await db.query(`
+    SELECT
+      id,
+      client_name,
+      team,
+      client_spoc,
+      project_name
+    FROM weekly_reports
+    ORDER BY id DESC
+    LIMIT 10
+  `);
+
+  console.log("TEAM DATA FROM DATABASE:", teamRows);
+
+  // Actual reports query
   const [rows] = await db.query(`
     SELECT
       wr.id,
@@ -87,7 +114,7 @@ exports.getAllReports = async () => {
       wr.week_to AS weekTo,
 
       wr.client_name AS client,
-      wr.team AS team,
+      wr.team,
       wr.client_spoc AS spoc,
       wr.project_name AS project,
       wr.work_details AS work,
@@ -105,6 +132,8 @@ exports.getAllReports = async () => {
 
     ORDER BY wr.reporting_date DESC
   `);
+
+  console.log("FINAL REPORT DATA:", rows);
 
   return rows;
 };
