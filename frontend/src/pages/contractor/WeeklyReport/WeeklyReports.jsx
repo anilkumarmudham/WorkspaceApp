@@ -29,6 +29,19 @@ function WeeklyReports() {
     });
   };
 
+  const isEditExpired = (report) => {
+    if (!report?.week_to) return false;
+
+    const weekTo = new Date(report.week_to);
+
+    // Editing is allowed until the end of the day
+    // after the reporting week ends.
+    weekTo.setDate(weekTo.getDate() + 1);
+    weekTo.setHours(23, 59, 59, 999);
+
+    return new Date() > weekTo;
+  };
+
   const getWeekDates = () => {
     const current = new Date();
 
@@ -492,16 +505,12 @@ function WeeklyReports() {
 
               <button
                 className={`edit-report-btn ${
-                  new Date() > new Date(report.week_to + "T23:59:59")
-                    ? "edit-disabled"
-                    : ""
+                  isEditExpired(report) ? "edit-disabled" : ""
                 }`}
                 onClick={() => handleEdit(report)}
-                disabled={new Date() > new Date(report.week_to + "T23:59:59")}
+                disabled={isEditExpired(report)}
               >
-                {new Date() > new Date(report.week_to + "T23:59:59")
-                  ? "Edit Closed"
-                  : "Edit"}
+                {isEditExpired(report) ? "Edit Closed" : "Edit"}
               </button>
             </div>
           ))

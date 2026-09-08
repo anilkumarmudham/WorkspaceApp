@@ -136,21 +136,20 @@ input[readonly]{
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
+    transition: background 0.2s ease, opacity 0.2s ease;
 }
 
 .edit-report-btn:hover {
-  background: #1d4ed8;
+    background: #1d4ed8;
 }
 
-.edit-report-btn:disabled,
-.edit-report-btn.edit-disabled {
+.edit-report-btn:disabled {
     background: #64748b;
     color: #e2e8f0;
     cursor: not-allowed;
     opacity: 0.75;
 }
 
-.edit-report-btn:disabled:hover,
-.edit-report-btn.edit-disabled:hover {
+.edit-report-btn:disabled:hover {
     background: #64748b;
 }
