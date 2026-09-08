@@ -174,11 +174,14 @@ function WeeklyReports() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.get("https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/reports/my", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const response = await axios.get(
+        "https://workspace-backend-anil-gae9cbh0gnb9cfce.southindia-01.azurewebsites.net/api/reports/my",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
       if (response.data.success) {
         setReports(response.data.reports);
@@ -488,10 +491,17 @@ function WeeklyReports() {
               </p>
 
               <button
-                className="edit-report-btn"
+                className={`edit-report-btn ${
+                  new Date() > new Date(report.week_to + "T23:59:59")
+                    ? "edit-disabled"
+                    : ""
+                }`}
                 onClick={() => handleEdit(report)}
+                disabled={new Date() > new Date(report.week_to + "T23:59:59")}
               >
-                Edit
+                {new Date() > new Date(report.week_to + "T23:59:59")
+                  ? "Edit Closed"
+                  : "Edit"}
               </button>
             </div>
           ))
